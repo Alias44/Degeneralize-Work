@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ModMetaData>
+	<name>De-generalize Work</name>
+	<author>Alias</author>
+	<supportedVersions>
+		<li>1.1</li>
+	</supportedVersions>
+	<packageId>Alias.DegeneralizeWork</packageId>
+   <description> Converts GeneralLaborSpeed back into SculptingSpeed, SmeltingSpeed, SmithingSpeed and TailorSpeed.
+	</description>
+</ModMetaData>
