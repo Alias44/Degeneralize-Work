@@ -55,6 +55,13 @@ In some cases loading in new traits through XPATH may not be the most efficient 
 </loadFolders>
 ```
 
+## Changes
+v1.0.1
+* v1.2 update
+
+v1.0.0
+* Initial release
+
 ## Licensing
 This mod is licensed under the GNU General Public License v2.0
 
