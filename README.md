@@ -56,6 +56,9 @@ In some cases loading in new traits through XPATH may not be the most efficient 
 ```
 
 ## Changes
+v1.0.2
+* v1.3 update (no changes needed)
+
 v1.0.1
 * v1.2 update
 
