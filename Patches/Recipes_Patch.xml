@@ -8,21 +8,21 @@
 	</Operation>
 	
 	<Operation Class="PatchOperationReplace">
-		<xpath>Defs/ThingDef/recipeMaker[workSpeedStat="GeneralLaborSpeed" and effectWorking="Tailor" and recipeUsers[li="ElectricTailoringBench" or li="HandTailoringBench"]]/workSpeedStat</xpath> <!--Tailored items at crafting spots could be a problem-->
+		<xpath>Defs/ThingDef/recipeMaker[(workSpeedStat="GeneralLaborSpeed" or workSpeedStat="VSE_TailoringSpeed") and effectWorking="Tailor" and recipeUsers[li="ElectricTailoringBench" or li="HandTailoringBench"]]/workSpeedStat</xpath> <!--Tailored items at crafting spots could be a problem-->
 		<value>
 			<workSpeedStat>TailoringSpeed</workSpeedStat>
 		</value>
 	</Operation>
 	
 	<Operation Class="PatchOperationReplace">
-		<xpath>Defs/RecipeDef[workSpeedStat="GeneralLaborSpeed" and effectWorking="Tailor"]/workSpeedStat</xpath>
+		<xpath>Defs/RecipeDef[(workSpeedStat="GeneralLaborSpeed" or workSpeedStat="VSE_TailoringSpeed") and effectWorking="Tailor"]/workSpeedStat</xpath>
 		<value>
 			<workSpeedStat>TailoringSpeed</workSpeedStat>
 		</value>
 	</Operation>
 	
 	<Operation Class="PatchOperationReplace">
-		<xpath>Defs/ThingDef/recipeMaker[workSpeedStat="GeneralLaborSpeed" and effectWorking="Sculpt" and recipeUsers[li="TableSculpting"]]/workSpeedStat</xpath>
+		<xpath>Defs/ThingDef/recipeMaker[(workSpeedStat="GeneralLaborSpeed" or workSpeedStat="VSE_ArtSpeed") and effectWorking="Sculpt" and recipeUsers[li="TableSculpting"]]/workSpeedStat</xpath>
 		<value>
 			<workSpeedStat>SculptingSpeed</workSpeedStat>
 		</value>

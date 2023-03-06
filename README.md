@@ -56,6 +56,9 @@ In some cases loading in new traits through XPATH may not be the most efficient 
 ```
 
 ## Changes
+v1.0.4
+* Vanilla Skills Expanded compatibility
+
 v1.0.3
 * v1.4 update (no changes needed)
 
