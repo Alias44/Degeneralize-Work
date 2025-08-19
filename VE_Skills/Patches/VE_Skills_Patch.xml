@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<Operation Class="PatchOperationReplace">
+		<xpath>Defs/StatDef[defName="VSE_WeaponCreationSpeed" or defName="VSE_ComponentCraftingSpeed"]/statFactors/li/text()["GeneralLaborSpeed"]</xpath>
+		<value>SmithingSpeed</value>
+	</Operation>
+
+	<Operation Class="DegeneralizeWork.PatchOperationModSequence">
+		<packageId>vanillaexpanded.skills</packageId>
+		<patchModes>
+			<li>LightTouch</li>
+		</patchModes>
+		<operations>
+			<li Class="PatchOperationReplace">
+				<xpath>Defs/StatDef[defName="VSE_ArtSpeed"]/statFactors/li/text()["GeneralLaborSpeed"]</xpath>
+				<value>SculptingSpeed</value>
+			</li>
+			<li Class="PatchOperationReplace">
+				<xpath>Defs/StatDef[defName="VSE_TailoringSpeed"]/statFactors/li/text()["GeneralLaborSpeed"]</xpath>
+				<value>TailoringSpeed</value>
+			</li>
+		</operations>
+	</Operation>
+	
+	<Operation Class="DegeneralizeWork.PatchOperationModSequence">
+		<packageId>vanillaexpanded.skills</packageId>
+		<patchModes>
+			<li>BestGuess</li>
+			<li>HeavyHand</li>
+		</patchModes>
+		<operations>
+			<li Class="PatchOperationRemove">
+				<xpath>Defs/StatDef[defName="VSE_TailoringSpeed" or defName="VSE_ArtSpeed"]</xpath>
+			</li>
+		</operations>
+	</Operation>
+	
+	<Operation Class="DegeneralizeWork.PatchOperationModSequence">
+		<packageId>vanillaexpanded.skills</packageId>
+		<patchModes>
+			<li>BestGuess</li>
+		</patchModes>
+		<operations>
+			<li Class="PatchOperationSetName">
+				<xpath>Defs/VSE.Expertise.ExpertiseDef/statOffsets/VSE_ArtSpeed</xpath>
+				<name>SculptingSpeed</name>
+			</li>
+			<li Class="PatchOperationSetName">
+				<xpath>Defs/VSE.Expertise.ExpertiseDef/statOffsets/VSE_TailoringSpeed</xpath>
+				<name>TailoringSpeed</name>
+			</li>
+		</operations>
+	</Operation>
+	
+	<Operation Class="DegeneralizeWork.PatchOperationModSequence">
+		<packageId>vanillaexpanded.skills</packageId>
+		<patchModes>
+			<li>HeavyHand</li>
+		</patchModes>
+		<operations>
+			<li Class="PatchOperationSetName">
+				<xpath>//VSE_ArtSpeed</xpath>
+				<name>SculptingSpeed</name>
+			</li>
+			<li Class="PatchOperationSetName">
+				<xpath>//VSE_TailoringSpeed</xpath>
+				<name>TailoringSpeed</name>
+			</li>
+		</operations>
+	</Operation>
+</Patch>
