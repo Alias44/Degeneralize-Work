@@ -1,0 +1,63 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net48</TargetFramework>
+	<LangVersion>latestMajor</LangVersion>
+	<OutputType>Library</OutputType>
+	<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+	
+	<GameVer>1.6</GameVer>
+	<Configurations>Debug;Release Current;Release 1.5;Release 1.4;Release 1.3;Release 1.2;Release 1.1</Configurations>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>portable</DebugType>
+    <Optimize>false</Optimize>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisIgnoreGeneratedCode>false</CodeAnalysisIgnoreGeneratedCode>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' != 'Debug' ">
+    <Optimize>true</Optimize>
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release Current' ">
+    <DefineConstants>TRACE;RELEASE_CURRENT</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Release 1.5'">
+    <DefineConstants>TRACE;RELEASE_1_5</DefineConstants>
+    <GameVer>1.5</GameVer>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Release 1.4'">
+    <DefineConstants>TRACE;RELEASE_1_4</DefineConstants>
+    <GameVer>1.4</GameVer>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Release 1.3'">
+    <DefineConstants>TRACE;RELEASE_1_3</DefineConstants>
+    <GameVer>1.3</GameVer>
+  </PropertyGroup> 
+  <PropertyGroup Condition="'$(Configuration)'=='Release 1.3'">
+    <DefineConstants>TRACE;RELEASE_1_2</DefineConstants>
+  <GameVer>1.2</GameVer>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)'=='Release 1.1'">
+    <DefineConstants>TRACE;RELEASE_1_1</DefineConstants>
+    <GameVer>1.1</GameVer>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <OutputPath>..\..\$(GameVer)\Assemblies\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Krafs.Rimworld.Ref">
+	  <Version>$(GameVer).*-*</Version>
+      <PrivateAssets>all</PrivateAssets>
+      <ExcludeAssets>runtime</ExcludeAssets>
+      <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	</PackageReference>
+  </ItemGroup>
+
+</Project>
