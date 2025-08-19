@@ -20,4 +20,6 @@
 			<workSpeedStat>SculptingSpeed</workSpeedStat>
 		</value>
 	</Operation>
+	
+	<!-- stat offsets in hedifs are getting missed -->
 </Patch>
