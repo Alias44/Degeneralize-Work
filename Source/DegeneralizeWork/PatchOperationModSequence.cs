@@ -10,32 +10,22 @@ using UnityEngine;
 using Verse;
 
 namespace DegeneralizeWork;
+
+/// <summary>
+/// An unholy abomination that is the combination of FindMod, PatchSequence, and MayRequire.
+/// Works with mod settings to allow the user to configure which patches are run for the mods specified in <see cref="patchModes">patchModes</see>.
+/// </summary>
 public class PatchOperationModSequence : PatchOperationSequence
 {
-	protected string packageId;
-
-	protected List<PatchMode> patchModes;
+	protected PackageMode patchModes;
 
 	protected override bool ApplyWorker(XmlDocument xml)
 	{
 		var mod = LoadedModManager.GetMod<DWCore>();
-		var currentMode = mod.settings.compatibilityMode.GetValueOrDefault(packageId, PatchMode.LightTouch);
 
-		// A packageId must be specified
-		if (packageId.NullOrEmpty())
-		{
-			return false;
-		}
+		mod.AddMode(patchModes);
 
-		// If no modes are provided, assume that the patch applies to every mode
-		if(patchModes.NullOrEmpty())
-		{
-			patchModes = Utility.AllEnumValues<PatchMode>().ToList();
-		}
-
-		mod.AddMode(packageId, patchModes);
-
-		if (patchModes.Contains(currentMode))
+		if (patchModes.ShouldApply(mod.settings))
 		{
 			return base.ApplyWorker(xml);
 		}

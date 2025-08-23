@@ -6,9 +6,8 @@
 	</Operation>
 
 	<Operation Class="DegeneralizeWork.PatchOperationModSequence">
-		<packageId>vanillaexpanded.skills</packageId>
 		<patchModes>
-			<li>LightTouch</li>
+			<vanillaexpanded.skills>LightTouch</vanillaexpanded.skills>
 		</patchModes>
 		<operations>
 			<li Class="PatchOperationReplace">
@@ -23,10 +22,9 @@
 	</Operation>
 	
 	<Operation Class="DegeneralizeWork.PatchOperationModSequence">
-		<packageId>vanillaexpanded.skills</packageId>
 		<patchModes>
-			<li>BestGuess</li>
-			<li>HeavyHand</li>
+			<vanillaexpanded.skills>BestGuess</vanillaexpanded.skills>
+			<vanillaexpanded.skills>HeavyHand</vanillaexpanded.skills>
 		</patchModes>
 		<operations>
 			<li Class="PatchOperationRemove">
@@ -36,9 +34,8 @@
 	</Operation>
 	
 	<Operation Class="DegeneralizeWork.PatchOperationModSequence">
-		<packageId>vanillaexpanded.skills</packageId>
 		<patchModes>
-			<li>BestGuess</li>
+			<vanillaexpanded.skills>BestGuess</vanillaexpanded.skills>
 		</patchModes>
 		<operations>
 			<li Class="PatchOperationSetName">
@@ -53,11 +50,11 @@
 	</Operation>
 	
 	<Operation Class="DegeneralizeWork.PatchOperationModSequence">
-		<packageId>vanillaexpanded.skills</packageId>
 		<patchModes>
-			<li>HeavyHand</li>
+			<vanillaexpanded.skills>HeavyHand</vanillaexpanded.skills>
 		</patchModes>
 		<operations>
+			<!--<xpath>///li/text()[. = "VSE_ArtSpeed"]</xpath> might work for older style li based defs, but is exceedingly slow -->
 			<li Class="PatchOperationSetName">
 				<xpath>//VSE_ArtSpeed</xpath>
 				<name>SculptingSpeed</name>

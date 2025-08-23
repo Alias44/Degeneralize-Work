@@ -8,6 +8,8 @@ using Verse;
 namespace DegeneralizeWork;
 public static class Utility
 {
+	public static int PatchModeCount = AllEnumValues<PatchMode>().Count();
+
 	public static IEnumerable<T> AllEnumValues<T>() where T : Enum => Enum.GetValues(typeof(T)).Cast<T>();
 
 	public static string PrefixTranslate(this string key) => ("DegeneralizeWork." + key).Translate();

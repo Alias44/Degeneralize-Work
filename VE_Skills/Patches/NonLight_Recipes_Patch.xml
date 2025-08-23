@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Patch>
+	<!-- slightly more destructive version of Recipes_Patch.xml, (it can't have the same name, as the game would override it on load-->
+
 	<Operation Class="DegeneralizeWork.PatchOperationModSequence">
-		<!-- In isolation, the base game in anyMode means that the patch should always run. If VE skills is also loaded it will run if VE skill is set to light touch mode-->
 		<patchModes>
-			<Ludeon.RimWorld/>
-			<vanillaexpanded.skills>LightTouch</vanillaexpanded.skills>
+			<vanillaexpanded.skills>BestGuess</vanillaexpanded.skills>
+			<vanillaexpanded.skills>HeavyHand</vanillaexpanded.skills>
 		</patchModes>
 		<operations>
 			<li Class="PatchOperationReplace">
@@ -15,18 +16,18 @@
 			</li>
 
 			<li Class="PatchOperationReplace">
-				<xpath>Defs/*[self::ThingDef/recipeMaker or self::RecipeDef]/descendant-or-self::node()[workSpeedStat="GeneralLaborSpeed" and effectWorking="Tailor"]/workSpeedStat</xpath>
+				<xpath>Defs/*[self::ThingDef/recipeMaker or self::RecipeDef]/descendant-or-self::node()[(workSpeedStat="GeneralLaborSpeed" or workSpeedStat="VSE_TailoringSpeed") and effectWorking="Tailor"]/workSpeedStat</xpath>
 				<value>
 					<workSpeedStat>TailoringSpeed</workSpeedStat>
 				</value>
 			</li>
 			
 			<li Class="PatchOperationReplace">
-				<xpath>Defs/*[self::ThingDef/recipeMaker or self::RecipeDef]/descendant-or-self::node()[workSpeedStat="GeneralLaborSpeed" and effectWorking="Sculpt"]/workSpeedStat</xpath>
+				<xpath>Defs/*[self::ThingDef/recipeMaker or self::RecipeDef]/descendant-or-self::node()[(workSpeedStat="GeneralLaborSpeed" or workSpeedStat="VSE_ArtSpeed") and effectWorking="Sculpt"]/workSpeedStat</xpath>
 				<value>
 					<workSpeedStat>SculptingSpeed</workSpeedStat>
 				</value>
 			</li>
-		</operations>
-	</Operation>
+	
+	<!-- TODO: stat offsets in hedifs are getting missed -->
 </Patch>
