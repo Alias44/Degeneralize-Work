@@ -55,7 +55,8 @@ public class DynamicPatch(ModContentPack content) : Mod(content)
 
 			foreach (var mode in Utility.AllEnumValues<PatchMode>())
 			{
-				listing.Label((mode.ToString() + "Description").PrefixTranslate());
+				listing.Label($"{mode}Description".PrefixTranslate());
+				listing.Gap(3);
 			}
 
 			listing.GapLine();

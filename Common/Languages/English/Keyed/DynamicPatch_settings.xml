@@ -8,9 +8,9 @@
 	<AliasDynamicPatch.Primer>Due to the nature of this mod, it may be necessary to modify other mods. Use these settings to alter how those mods are patched, thus favoring compatibility or user experience. Patch modes are as follows:</AliasDynamicPatch.Primer>
 
 	<!-- Descriptions -->
-	<AliasDynamicPatch.LightTouchDescription>Light touch: the most compatible option, listed mod data is only changed to the minimum extent needed for compatibility.</AliasDynamicPatch.LightTouchDescription>
-	<AliasDynamicPatch.BestGuessDescription>Best guess: will attempt to seamlessly integrate with the listed mod, but might throw an error if there's a use case it isn't programmed for.</AliasDynamicPatch.BestGuessDescription>
-	<AliasDynamicPatch.HeavyHandDescription>Heavy hand: orders of magnitude slower than Best guess, but should seamless integrate with the listed mod without throwing errors.</AliasDynamicPatch.HeavyHandDescription>
+	<AliasDynamicPatch.LightTouchDescription>- Light touch: the most compatible option, listed mod data is only changed to the minimum extent needed for compatibility.</AliasDynamicPatch.LightTouchDescription>
+	<AliasDynamicPatch.BestGuessDescription>- Best guess: will attempt to seamlessly integrate with the listed mod, but might throw an error if there's a use case it isn't programmed for.</AliasDynamicPatch.BestGuessDescription>
+	<AliasDynamicPatch.HeavyHandDescription>- Heavy hand: orders of magnitude slower than Best guess, but should seamlessly integrate with the listed mod without throwing errors.\nNote:These are commented out by default and should only be enabled if you know what you are doing or have been instructed to do so.</AliasDynamicPatch.HeavyHandDescription>
 
 	<!-- Mode names -->
 	<AliasDynamicPatch.LightTouch>Light touch</AliasDynamicPatch.LightTouch>

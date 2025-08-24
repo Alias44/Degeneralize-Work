@@ -63,7 +63,7 @@ public class PackageMode
 			.GroupBy(node => node.Name, node => Enum.Parse<PatchMode>(node.InnerText))
 			.ToDictionary(group => group.Key, group => new ModMode
 			{
-				mod = LoadedModManager.RunningMods.First(mod => mod.ModMetaData.SamePackageId(group.Key)),
+				mod = LoadedModManager.RunningMods.FirstOrDefault(mod => mod.ModMetaData.SamePackageId(group.Key)),
 				modes = group.ToHashSet()
 			}, StringComparer.CurrentCultureIgnoreCase);
 
