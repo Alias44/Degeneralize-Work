@@ -33,7 +33,7 @@ I like how clean this reads, but is by far the slowest due to `//*` effectively 
 
 #### 2
 ```
-Matching `Defs/*[self::ThingDef or self::RecipeDef]/descendant-or-self::node()[workSpeedStat="GeneralLaborSpeed" and (effectWorking="Smith" or effectWorking="Smelt" or effectWorking="Cook")]/workSpeedStat`
+Matching Defs/*[self::ThingDef or self::RecipeDef]/descendant-or-self::node()[workSpeedStat="GeneralLaborSpeed" and (effectWorking="Smith" or effectWorking="Smelt" or effectWorking="Cook")]/workSpeedStat
 Profiling with 100 iterations.
 Matched Nodes: 51
 Average: 464217.84 ticks (45.91ms)
@@ -43,7 +43,7 @@ This is slightly faster due to being restricted down to just `ThingDef` and `Rec
 
 #### 3
 ```
-Matching `Defs/*[self::ThingDef/recipeMaker or self::RecipeDef]/descendant-or-self::node()[workSpeedStat="GeneralLaborSpeed" and (effectWorking="Smith" or effectWorking="Smelt" or effectWorking="Cook")]/workSpeedStat`
+Matching Defs/*[self::ThingDef/recipeMaker or self::RecipeDef]/descendant-or-self::node()[workSpeedStat="GeneralLaborSpeed" and (effectWorking="Smith" or effectWorking="Smelt" or effectWorking="Cook")]/workSpeedStat
 Profiling with 100 iterations.
 Matched Nodes: 51
 Average: 182158.55 ticks (17.61ms)
@@ -53,17 +53,19 @@ Minor change over the previous implementation, but by only selecting ThingDefs w
 
 #### 4
 ```
-Matching `Defs/RecipeDef[workSpeedStat="GeneralLaborSpeed" and (effectWorking="Smith" or effectWorking="Smelt" or effectWorking="Cook")]/workSpeedStat|Defs/ThingDef/recipeMaker[workSpeedStat="GeneralLaborSpeed" and (effectWorking="Smith" or effectWorking="Smelt" or effectWorking="Cook")]/workSpeedStat
+Matching Defs/RecipeDef[workSpeedStat="GeneralLaborSpeed" and (effectWorking="Smith" or effectWorking="Smelt" or effectWorking="Cook")]/workSpeedStat | Defs/ThingDef/recipeMaker[workSpeedStat="GeneralLaborSpeed" and (effectWorking="Smith" or effectWorking="Smelt" or effectWorking="Cook")]/workSpeedStat
 Profiling with 100 iterations.
 Matched Nodes: 51
 Average: 51346.23 ticks (4.71ms)
 ```
 
-This is technically the fastest implementation (since it's just a union between the two baseline queries), but I hate how ugly it is
+This is technically the fastest implementation (since it's just a union between the two baseline queries), but I hate how ugly it is. This can be slightly mitigated by whitespace.
 
 
 ### Conclusion
-There's no reason to waste computation, but I generally favor readability over speed when it comes to code, so for the time being I'm going to go with the third implementation. Mostly because it allows me to easily tweak the logic without having to update it in multiple places. For similar reasons it also makes it easy to test the patch, since I can just drop the trailing `/workSpeedStat` to see what parent nodes are being operated on
+~~ There's no reason to waste computation, but I generally favor readability over speed when it comes to code, so for the time being I'm going to go with the third implementation. Mostly because it allows me to easily tweak the logic without having to update it in multiple places. For similar reasons it also makes it easy to test the patch, since I can just drop the trailing `/workSpeedStat` to see what parent nodes are being operated on ~~
+
+On second thought, since the game will allows for whitespace (including new lines), it's worth claiming the performance gains of using the more optimized (if a bit ugly patches)
 
 `Disclaimer: averages are measuring timer ticks (not RimWorld ticks)`
 

@@ -34,7 +34,7 @@
     <BuildType Solution="Release 1.3|*" Project="Release" />
     <BuildType Solution="Release 1.4|*" Project="Release" />
     <BuildType Solution="Release 1.5|*" Project="Release" />
-    <BuildType Solution="Release Current|*" Project="Release" />
+    <BuildType Solution="Release Current|x64" Project="Release" />
   </Project>
   <Project Path="DegeneralizeWork.csproj">
     <BuildType Solution="Release|*" Project="Release Current" />

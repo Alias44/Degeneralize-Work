@@ -1,28 +1,38 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <Patch>
-	<Operation Class="DegeneralizeWork.PatchOperationModSequence">
-		<!-- In isolation, the base game in anyMode means that the patch should always run. If VE skills is also loaded it will run if VE skill is set to light touch mode-->
+	<!-- Always runs -->
+	<Operation Class="PatchOperationReplace">
+		<xpath>
+			Defs/ThingDef/recipeMaker[workSpeedStat="GeneralLaborSpeed" and (effectWorking="Smith" or effectWorking="Smelt" or effectWorking="Cook")]/workSpeedStat |
+			Defs/RecipeDef[workSpeedStat="GeneralLaborSpeed" and (effectWorking="Smith" or effectWorking="Smelt" or effectWorking="Cook")]/workSpeedStat
+		</xpath>
+		<value>
+			<workSpeedStat>SmithingSpeed</workSpeedStat>
+		</value>
+	</Operation>
+
+	<!-- packageId's that aren't loaded are ignored, so this runs with either just the base game or if VE skills is running and set to light touch mode-->
+	<Operation Class="DegeneralizeWork.PatchOperationModSequence">	
 		<patchModes>
 			<Ludeon.RimWorld/>
 			<vanillaexpanded.skills>LightTouch</vanillaexpanded.skills>
 		</patchModes>
 		<operations>
 			<li Class="PatchOperationReplace">
-				<xpath>Defs/*[self::ThingDef/recipeMaker or self::RecipeDef]/descendant-or-self::node()[workSpeedStat="GeneralLaborSpeed" and (effectWorking="Smith" or effectWorking="Smelt" or effectWorking="Cook")]/workSpeedStat</xpath>
-				<value>
-					<workSpeedStat>SmithingSpeed</workSpeedStat>
-				</value>
-			</li>
-
-			<li Class="PatchOperationReplace">
-				<xpath>Defs/*[self::ThingDef/recipeMaker or self::RecipeDef]/descendant-or-self::node()[workSpeedStat="GeneralLaborSpeed" and effectWorking="Tailor"]/workSpeedStat</xpath>
+				<xpath>
+					Defs/ThingDef/recipeMaker[workSpeedStat="GeneralLaborSpeed" and effectWorking="Tailor"]/workSpeedStat | 
+					Defs/RecipeDef[workSpeedStat="GeneralLaborSpeed" and effectWorking="Tailor"]/workSpeedStat
+				</xpath>
 				<value>
 					<workSpeedStat>TailoringSpeed</workSpeedStat>
 				</value>
 			</li>
 			
 			<li Class="PatchOperationReplace">
-				<xpath>Defs/*[self::ThingDef/recipeMaker or self::RecipeDef]/descendant-or-self::node()[workSpeedStat="GeneralLaborSpeed" and effectWorking="Sculpt"]/workSpeedStat</xpath>
+				<xpath>
+					Defs/ThingDef/recipeMaker[workSpeedStat="GeneralLaborSpeed" and effectWorking="Sculpt"]/workSpeedStat | 
+					Defs/RecipeDef[workSpeedStat="GeneralLaborSpeed" and effectWorking="Sculpt"]/workSpeedStat
+				</xpath>
 				<value>
 					<workSpeedStat>SculptingSpeed</workSpeedStat>
 				</value>
