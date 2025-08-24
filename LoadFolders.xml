@@ -7,6 +7,8 @@
 		<li>/</li>
 		<li>Common</li>
 		<li>1.6</li>
-		<li IfModActive="vanillaexpanded.skills">VE_Skills</li>
+		<li IfModActive="vanillaexpanded.skills">VE_Skills/Base</li>
+		<li IfModActiveAll="vanillaexpanded.skills,FrozenSnowFox.VanillaBionicsExpansion">VE_Skills/FSF_Bionics</li>
+		<li IfModActiveAll="vanillaexpanded.skills,FrozenSnowFox.AdvancedBionicsExpansion">VE_Skills/FSF_Bionics</li>
 	</v1.6>
 </loadFolders>

@@ -12,7 +12,7 @@
 			<li Class="PatchOperationReplace">
 				<xpath>
 					Defs/ThingDef/recipeMaker[(workSpeedStat="GeneralLaborSpeed" or workSpeedStat="VSE_TailoringSpeed") and effectWorking="Tailor"]/workSpeedStat | 
-					Defs/RecipeDef[(workSpeedStat="GeneralLaborSpeed" or workSpeedStat="VSE_TailoringSpeed") and effectWorking="Tailor"]/workSpeedStat
+					Defs/RecipeDef			 [(workSpeedStat="GeneralLaborSpeed" or workSpeedStat="VSE_TailoringSpeed") and effectWorking="Tailor"]/workSpeedStat
 				</xpath>
 				<value>
 					<workSpeedStat>TailoringSpeed</workSpeedStat>
@@ -22,7 +22,7 @@
 			<li Class="PatchOperationReplace">
 				<xpath>
 					Defs/ThingDef/recipeMaker[(workSpeedStat="GeneralLaborSpeed" or workSpeedStat="VSE_ArtSpeed") and effectWorking="Sculpt"]/workSpeedStat | 
-					Defs/RecipeDef[workSpeedStat="GeneralLaborSpeed" and effectWorking="Sculpt"]/workSpeedStat
+					Defs/RecipeDef			 [(workSpeedStat="GeneralLaborSpeed" or workSpeedStat="VSE_ArtSpeed") and effectWorking="Sculpt"]/workSpeedStat
 				</xpath>
 				<value>
 					<workSpeedStat>SculptingSpeed</workSpeedStat>

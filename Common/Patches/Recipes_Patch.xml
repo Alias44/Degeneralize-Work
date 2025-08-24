@@ -4,7 +4,7 @@
 	<Operation Class="PatchOperationReplace">
 		<xpath>
 			Defs/ThingDef/recipeMaker[workSpeedStat="GeneralLaborSpeed" and (effectWorking="Smith" or effectWorking="Smelt" or effectWorking="Cook")]/workSpeedStat |
-			Defs/RecipeDef[workSpeedStat="GeneralLaborSpeed" and (effectWorking="Smith" or effectWorking="Smelt" or effectWorking="Cook")]/workSpeedStat
+			Defs/RecipeDef			 [workSpeedStat="GeneralLaborSpeed" and (effectWorking="Smith" or effectWorking="Smelt" or effectWorking="Cook")]/workSpeedStat
 		</xpath>
 		<value>
 			<workSpeedStat>SmithingSpeed</workSpeedStat>
@@ -21,7 +21,7 @@
 			<li Class="PatchOperationReplace">
 				<xpath>
 					Defs/ThingDef/recipeMaker[workSpeedStat="GeneralLaborSpeed" and effectWorking="Tailor"]/workSpeedStat | 
-					Defs/RecipeDef[workSpeedStat="GeneralLaborSpeed" and effectWorking="Tailor"]/workSpeedStat
+					Defs/RecipeDef			 [workSpeedStat="GeneralLaborSpeed" and effectWorking="Tailor"]/workSpeedStat
 				</xpath>
 				<value>
 					<workSpeedStat>TailoringSpeed</workSpeedStat>
@@ -31,7 +31,7 @@
 			<li Class="PatchOperationReplace">
 				<xpath>
 					Defs/ThingDef/recipeMaker[workSpeedStat="GeneralLaborSpeed" and effectWorking="Sculpt"]/workSpeedStat | 
-					Defs/RecipeDef[workSpeedStat="GeneralLaborSpeed" and effectWorking="Sculpt"]/workSpeedStat
+					Defs/RecipeDef			 [workSpeedStat="GeneralLaborSpeed" and effectWorking="Sculpt"]/workSpeedStat
 				</xpath>
 				<value>
 					<workSpeedStat>SculptingSpeed</workSpeedStat>
