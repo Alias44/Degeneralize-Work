@@ -2,6 +2,7 @@
 <ModMetaData>
 	<name>De-generalize Work</name>
 	<author>Alias</author>
+	<modVersion IgnoreIfNoMatchingField="True">2.0.0</modVersion>
 	<packageId>Alias.DegeneralizeWork</packageId>
 	
 	<supportedVersions>
@@ -15,7 +16,9 @@
 	
 	<loadAfter>
 		<li>vanillaexpanded.skills</li>
+		<li>FrozenSnowFox.VanillaBionicsExpansion</li>
+		<li>FrozenSnowFox.AdvancedBionicsExpansion</li>
 	</loadAfter>
 	
-   <description>1.1 lumped SculptingSpeed, SmeltingSpeed, SmithingSpeed and TailorSpeed into one stat (GeneralLaborSpeed), unfortunately this change is a huge blow to trait mods (including my own Additional Traits mod) that used those stats to give the game just a little bit more depth. As such, this mod adds those stats back as dependents of GeneralLaborSpeed, this means that changes to GeneralLaborSpeed will be passed down to SculptingSpeed, SmeltingSpeed, SmithingSpeed and TailorSpeed, thus (hopefully) ensuring compatibility.</description>
+   <description>1.1 lumped SculptingSpeed, SmeltingSpeed, SmithingSpeed and TailoringSpeed into one stat (GeneralLaborSpeed), unfortunately this change is a huge blow to trait mods (including my own Additional Traits mod) that used those stats to give the game just a little bit more depth. As such, this mod adds those stats back as dependents of GeneralLaborSpeed, this means that changes to GeneralLaborSpeed will be passed down to SculptingSpeed, SmeltingSpeed, SmithingSpeed and TailoringSpeed, thus (hopefully) ensuring compatibility.</description>
 </ModMetaData>

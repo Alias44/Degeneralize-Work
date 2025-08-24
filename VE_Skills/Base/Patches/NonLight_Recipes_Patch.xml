@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<!-- slightly more destructive version of Recipes_Patch.xml, (it can't have the same name, as the game would override it on load -->
+	<!-- smithing does not need to be repeated as VSE_WeaponCreationSpeed and VSE_ComponentCraftingSpeed are not duplicated between mods (so there's no reason to remove them) -->
+
+	<Operation Class="DegeneralizeWork.PatchOperationModSequence">
+		<patchModes>
+			<vanillaexpanded.skills>BestGuess</vanillaexpanded.skills>
+			<!--<vanillaexpanded.skills>HeavyHand</vanillaexpanded.skills>-->
+		</patchModes>
+		<operations>
+			<li Class="PatchOperationReplace">
+				<xpath>
+					Defs/ThingDef/recipeMaker[(workSpeedStat="GeneralLaborSpeed" or workSpeedStat="VSE_TailoringSpeed") and effectWorking="Tailor"]/workSpeedStat | 
+					Defs/RecipeDef			 [(workSpeedStat="GeneralLaborSpeed" or workSpeedStat="VSE_TailoringSpeed") and effectWorking="Tailor"]/workSpeedStat
+				</xpath>
+				<value>
+					<workSpeedStat>TailoringSpeed</workSpeedStat>
+				</value>
+			</li>
+			
+			<li Class="PatchOperationReplace">
+				<xpath>
+					Defs/ThingDef/recipeMaker[(workSpeedStat="GeneralLaborSpeed" or workSpeedStat="VSE_ArtSpeed") and effectWorking="Sculpt"]/workSpeedStat | 
+					Defs/RecipeDef			 [(workSpeedStat="GeneralLaborSpeed" or workSpeedStat="VSE_ArtSpeed") and effectWorking="Sculpt"]/workSpeedStat
+				</xpath>
+				<value>
+					<workSpeedStat>SculptingSpeed</workSpeedStat>
+				</value>
+			</li>
+		</operations>
+	</Operation>
+</Patch>

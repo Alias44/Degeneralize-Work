@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Patch>
+	<Operation Class="DegeneralizeWork.PatchOperationModSequence">
+		<requireAllLoaded>True</requireAllLoaded>
+		<patchModes>
+			<FrozenSnowFox.AdvancedBionicsExpansion/>
+			<vanillaexpanded.skills>BestGuess</vanillaexpanded.skills>
+		</patchModes>
+		<operations>
+			<li Class="PatchOperationSetName">
+				<xpath>Defs/HediffDef/stages/li/*[self::statOffsets or self::statFactors]/VSE_TailoringSpeed</xpath>
+				<name>TailoringSpeed</name>
+			</li>
+		
+			<li Class="PatchOperationSetName">
+				<xpath>Defs/HediffDef/stages/li/*[self::statOffsets or self::statFactors]/VSE_ArtSpeed</xpath>
+				<name>SculptingSpeed</name>
+			</li>
+		</operations>
+	</Operation>
+</Patch>
