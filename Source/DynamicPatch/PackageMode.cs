@@ -10,87 +10,84 @@ using Verse;
 namespace AliasDynamicPatch;
 
 /// <summary>
-/// Used to hold relationship between mod packageId(s) and <see cref="PatchMode"/>(s)
+/// Relates a mod's packageId to a set <see cref="PatchMode"/>(s)
 /// </summary>
 /// <remarks>
 /// note: <see cref="ModMetaData"/> has multiple fields / access methods for packageId with varying cases and suffixes, because
 /// the game isn't picky about about casing when determining duplicate Id's (<see cref="ModMetaData.SamePackageId(string, bool)">SamePackageId</see>)
-/// I don't want to be either. As such, use <see cref="StringComparer.CurrentCulture  IgnoreCase"/> when instantiating <see cref="anyMode"/> and <see cref="modes"/>
+/// I don't want to be either. As such, use <see cref="StringComparer.CurrentCulture  IgnoreCase"/> when instantiating <see cref="anyMode"/> and <see cref="configuredModes"/>
 /// </remarks>
 public class PackageMode
 {
-	Combination combinationMode = default;
-
 	/// <summary>
 	/// Stores packageIds that should apply in every patchMode
 	/// </summary>
 	/// <remarks>
 	/// Dev note: Becasue <see cref="PackageMode"/> is unfied and reused for Mod Settings, the semantics are important here.
 	/// A Patch that doesn't care what mode is set is <u>not</u> the same as a collection of Patches that comprose the set of all <see cref="PatchMode"/>s
-	/// (the former doesn't need mod settings (because it always runs), while the latter should allow the user to pick the 
+	/// (the former doesn't need mod settings (because it always runs), while the latter should allow the user to pick the prefered mode
 	///</remarks>
 	HashSet<string> anyMode;
 
 	/// <summary>
-	/// Relates packageIds (Key) to a set of patchModes that apply (value)
+	/// Relates packageIds (Key) to a set of <see cref="PatchMode"/>s that apply
 	/// </summary>
-	Dictionary<string, HashSet<PatchMode>> modes;
+	Dictionary<string, ModMode> configuredModes;
+
+	IEnumerable<KeyValuePair<string, ModMode>> LoadedMods => configuredModes.Where(kv => kv.Value.mod != null);
 
 	public PackageMode()
 	{
 		anyMode = new(StringComparer.CurrentCultureIgnoreCase);
-		modes = new(StringComparer.CurrentCultureIgnoreCase);
+		configuredModes = new(StringComparer.CurrentCultureIgnoreCase);
 	}
 
 	public struct ModMode
 	{
 		public ModContentPack mod;
-		public IEnumerable<PatchMode> modes;
+		public HashSet<PatchMode> modes;
 	}
 
 	/// <summary>
 	/// 
 	/// </summary>
-	public IEnumerable<ModMode> ConfigurableMods => LoadedModManager.RunningMods
-		.Where(mod => modes.ContainsKey(mod.PackageId)) // Mods in anyMode should always be considered patchable and as a result should have no use configs
-		.Select(content => new ModMode()
-		{
-			mod = content,
-			modes = Get(content.PackageId)
-		});
+	/// <remarks>Mods in the <see cref="anyMode"/>set should always be considered patchable and as a result should have no use configs</remarks>
+	public IEnumerable<ModMode> ConfigurableMods => LoadedMods.Select(kv => kv.Value);
 
 	public void LoadDataFromXmlCustom(XmlNode xmlRoot)
 	{
-		var nodes = xmlRoot.ChildNodes.Cast<XmlNode>()
-			.Where(node => LoadedModManager.RunningMods.Any(mod => mod.ModMetaData.SamePackageId(node.Name))); // Only worry about mods that are running
+		var nodes = xmlRoot.ChildNodes.Cast<XmlNode>();
 
-		modes = nodes
+		configuredModes = nodes
 			.Where(node => !node.InnerText.NullOrEmpty())
 			.GroupBy(node => node.Name, node => Enum.Parse<PatchMode>(node.InnerText))
-			.ToDictionary(group => group.Key, group => group.ToHashSet(), StringComparer.CurrentCultureIgnoreCase);
+			.ToDictionary(group => group.Key, group => new ModMode
+			{
+				mod = LoadedModManager.RunningMods.First(mod => mod.ModMetaData.SamePackageId(group.Key)),
+				modes = group.ToHashSet()
+			}, StringComparer.CurrentCultureIgnoreCase);
 
 		// Semantically, nodes that group to be the set of all PatchMode's should be moved to anyMode, but I don't feel like complicating the logic
-		// (and load time) for a feature that I'm not going to use (plus there's no reason to make XML more tedious to write/ read by forcing duplicate spam)
+		// (and load time) for a feature that I'm not going to use (plus there's no reason to make XML more tedious to write/ read by allowing duplicate spam)
 
-		// If no modes are provided, assume that the patch applies to every mode
+		// If no configuredModes are provided, assume that the patch applies to every mode
 		anyMode = nodes
-			.Where(node => node.InnerText.NullOrEmpty() && !modes.ContainsKey(node.Name))
+			.Where(node => node.InnerText.NullOrEmpty() && !configuredModes.ContainsKey(node.Name))
 			.Select(node => node.Name)
 			.ToHashSet(StringComparer.CurrentCultureIgnoreCase);
 	}
 
-	public bool ShouldApply(Settings settings)
+	public bool ShouldApply(Settings settings, bool requireAllLoaded = false)
 	{
-		// If no key hasn't been added to the settigns, assume that it should be in deafult (LightTouch) mode
-		bool checkSettings(KeyValuePair<string, HashSet<PatchMode>> kv) => kv.Value.Contains(settings.GetMode(kv.Key));
+		bool checkSettings(KeyValuePair<string, ModMode> kv) => kv.Value.modes.Contains(settings.GetMode(kv.Key));
+
+		if (requireAllLoaded && (anyMode.Any(packageId => !Utility.IsLoaded(packageId)) || configuredModes.Values.Any(package => package.mod == null)))
+		{
+			return false;
+		}
 
 		// Don't check the anyMode set as it will always apply
-		return combinationMode switch
-		{
-			Combination.All => modes.All(checkSettings),
-			Combination.Any => modes.Any(checkSettings),
-			_ => false,
-		};
+		return LoadedMods.All(checkSettings);
 	}
 
 
@@ -102,15 +99,15 @@ public class PackageMode
 	{
 		anyMode.AddRange(newLoad.anyMode);
 
-		foreach (var kv in newLoad.modes)
+		foreach (var kv in newLoad.configuredModes)
 		{
-			if (modes.ContainsKey(kv.Key))
+			if (configuredModes.ContainsKey(kv.Key))
 			{
-				modes[kv.Key].AddRange(kv.Value);
+				configuredModes[kv.Key].modes.AddRange(kv.Value.modes);
 			}
 			else
 			{
-				modes[kv.Key] = kv.Value;
+				configuredModes[kv.Key] = kv.Value;
 			}
 
 		}
@@ -127,9 +124,9 @@ public class PackageMode
 		{
 			return Utility.AllEnumValues<PatchMode>();
 		}
-		else if (modes.ContainsKey(modId))
+		else if (configuredModes.ContainsKey(modId))
 		{
-			return modes[modId];
+			return configuredModes[modId].modes;
 		}
 		
 		return [];

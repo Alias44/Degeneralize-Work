@@ -15,4 +15,6 @@ public static class Utility
 	public static string PrefixTranslate(this string key) => ("AliasDynamicPatch." + key).Translate();
 
 	public static string PrefixTranslate(this string key, NamedArgument arg1) => ("AliasDynamicPatch." + key).Translate(arg1);
+
+	public static bool IsLoaded(string packageId) => LoadedModManager.RunningMods.Any(mod => mod.ModMetaData.SamePackageId(packageId));
 }

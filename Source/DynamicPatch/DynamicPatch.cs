@@ -13,7 +13,8 @@ public class DynamicPatch(ModContentPack content) : Mod(content)
 	protected string translatePrefix;
 
 	/// <summary>
-	/// Stores the union of <see cref="PatchOperationModSequence.patchModes"/> from each patch loaded.<br/>
+	/// Stores the union of all <see cref="PatchOperationModSequence.appliesTo"/> from each patch loaded (or in other words,
+	/// the set of <see cref="PatchMode"/>(s) available for a given mod).<br/>
 	/// Used to drive available settings in menu.
 	/// </summary>
 	/// <remarks>this should every patche, even if it is not applied due to PatchMode criteria</remarks>

@@ -17,6 +17,10 @@ namespace AliasDynamicPatch;
 /// </summary>
 public class PatchOperationModSequence<T> : PatchOperationSequence where T : DynamicPatch
 {
+	bool requireAllLoaded = false;
+	/// <summary>
+	/// Indicates which <see cref="PatchMode"/>(s) a given mod should be in for a patch to apply.<br/>
+	/// </summary>
 	protected PackageMode patchModes;
 
 	protected override bool ApplyWorker(XmlDocument xml)
@@ -25,7 +29,7 @@ public class PatchOperationModSequence<T> : PatchOperationSequence where T : Dyn
 
 		mod.AddMode(patchModes);
 
-		if (patchModes.ShouldApply(mod.settings))
+		if (patchModes.ShouldApply(mod.settings, requireAllLoaded))
 		{
 			return base.ApplyWorker(xml);
 		}

@@ -9,6 +9,7 @@ public class Settings : ModSettings
 
 	public PatchMode GetMode(string packageId)
 	{
+		// If no key hasn't been added to the settigns, assume that it should be in deafult (LightTouch) mode
 		return compatibilityMode.GetValueOrDefault(packageId, default);
 	}
 
