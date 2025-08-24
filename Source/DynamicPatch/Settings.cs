@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Verse;
 
-namespace DegeneralizeWork;
+namespace AliasDynamicPatch;
 public class Settings : ModSettings
 {
 	public Dictionary<string, PatchMode> compatibilityMode = [];
@@ -21,7 +21,7 @@ public class Settings : ModSettings
 	{
 		base.ExposeData();
 
-		Scribe_Collections.Look(ref compatibilityMode, "DW.compatibilityMode", LookMode.Value, LookMode.Value);
+		Scribe_Collections.Look(ref compatibilityMode, "compatibilityMode", LookMode.Value, LookMode.Value);
 
 		if (Scribe.mode == LoadSaveMode.LoadingVars && compatibilityMode == null)
 		{

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+	<!-- Settings menu -->
+	<DegeneralizeWork.SettingsCategory>De-generalize Work</DegeneralizeWork.SettingsCategory>
+	
+	<!-- Reasoning -->
+	<DegeneralizeWork.ModTooltip.vanillaexpanded.skills>VE Skills also adds stats for Tailoring and Sculpting.\nLight touch will to keep the duplicates, while Best guess will attempt to supplant the stats with the ones defined by this mod.</DegeneralizeWork.ModTooltip.vanillaexpanded.skills>
+	
+</LanguageData>

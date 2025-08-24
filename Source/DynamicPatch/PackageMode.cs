@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Xml;
 using Verse;
 
-namespace DegeneralizeWork;
+namespace AliasDynamicPatch;
 
 /// <summary>
 /// Used to hold relationship between mod packageId(s) and <see cref="PatchMode"/>(s)

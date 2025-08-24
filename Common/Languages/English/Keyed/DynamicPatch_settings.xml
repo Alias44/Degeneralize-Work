@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<LanguageData>
+	<!-- Settings menu -->
+	<AliasDynamicPatch.NoOptions>No configuration options currently available.</AliasDynamicPatch.NoOptions>
+	
+	<AliasDynamicPatch.NeedsRestart>All changes require a restart to take effect</AliasDynamicPatch.NeedsRestart>
+
+	<AliasDynamicPatch.Primer>Due to the nature of this mod, it may be necessary to modify other mods. Use these settings to alter how those mods are patched, thus favoring compatibility or user experience. Patch modes are as follows:</AliasDynamicPatch.Primer>
+
+	<!-- Descriptions -->
+	<AliasDynamicPatch.LightTouchDescription>Light touch: the most compatible option, listed mod data is only changed to the minimum extent needed for compatibility.</AliasDynamicPatch.LightTouchDescription>
+	<AliasDynamicPatch.BestGuessDescription>Best guess: will attempt to seamlessly integrate with the listed mod, but might throw an error if there's a use case it isn't programmed for.</AliasDynamicPatch.BestGuessDescription>
+	<AliasDynamicPatch.HeavyHandDescription>Heavy hand: orders of magnitude slower than Best guess, but should seamless integrate with the listed mod without throwing errors.</AliasDynamicPatch.HeavyHandDescription>
+
+	<!-- Mode names -->
+	<AliasDynamicPatch.LightTouch>Light touch</AliasDynamicPatch.LightTouch>
+	<AliasDynamicPatch.BestGuess>Best guess</AliasDynamicPatch.BestGuess>
+	<AliasDynamicPatch.HeavyHand>Heavy hand</AliasDynamicPatch.HeavyHand>
+
+	<AliasDynamicPatch.ModLabel>{0} compatibility mode</AliasDynamicPatch.ModLabel>
+</LanguageData>

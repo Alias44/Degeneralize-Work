@@ -28,6 +28,7 @@
 					<workSpeedStat>SculptingSpeed</workSpeedStat>
 				</value>
 			</li>
-	
+		</operations>
+	</Operation>
 	<!-- TODO: stat offsets in hedifs are getting missed -->
 </Patch>

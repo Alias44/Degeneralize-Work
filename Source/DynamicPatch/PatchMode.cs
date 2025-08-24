@@ -1,4 +1,4 @@
-﻿namespace DegeneralizeWork;
+﻿namespace AliasDynamicPatch;
 public enum PatchMode : byte
 {
 	LightTouch = 0,
