@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+  <Excluded>
+    <exclude>.git</exclude>
+    <exclude>Source\DegeneralizeWork\.vs</exclude>
+    <exclude>Source\DegeneralizeWork\bin</exclude>
+    <exclude>Source\DegeneralizeWork\obj</exclude>
+    <exclude>Source\DynamicPatch\bin</exclude>
+    <exclude>Source\DynamicPatch\obj</exclude>
+  </Excluded>
+</Configuration>
