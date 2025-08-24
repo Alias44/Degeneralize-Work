@@ -7,7 +7,7 @@
 	<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 	
 	<GameVer>1.6</GameVer>
-	<Configurations>Debug;Release Current;Release 1.5;Release 1.4;Release 1.3;Release 1.2;Release 1.1</Configurations>
+	<Configurations>Debug;Release Current</Configurations>
   </PropertyGroup>
   
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
@@ -25,26 +25,6 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release Current' ">
     <DefineConstants>TRACE;RELEASE_CURRENT</DefineConstants>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)'=='Release 1.5'">
-    <DefineConstants>TRACE;RELEASE_1_5</DefineConstants>
-    <GameVer>1.5</GameVer>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)'=='Release 1.4'">
-    <DefineConstants>TRACE;RELEASE_1_4</DefineConstants>
-    <GameVer>1.4</GameVer>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)'=='Release 1.3'">
-    <DefineConstants>TRACE;RELEASE_1_3</DefineConstants>
-    <GameVer>1.3</GameVer>
-  </PropertyGroup> 
-  <PropertyGroup Condition="'$(Configuration)'=='Release 1.3'">
-    <DefineConstants>TRACE;RELEASE_1_2</DefineConstants>
-  <GameVer>1.2</GameVer>
-  </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)'=='Release 1.1'">
-    <DefineConstants>TRACE;RELEASE_1_1</DefineConstants>
-    <GameVer>1.1</GameVer>
   </PropertyGroup>
 
   <PropertyGroup>
